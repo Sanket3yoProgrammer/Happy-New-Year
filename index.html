@@ -1125,27 +1125,17 @@ section {
     }
 
     function celebrate() {
-      const msg = new SpeechSynthesisUtterance("Yoooooo! Happy New Year 2025!");
-      speechSynthesis.speak(msg);
+    // Speak a message
+    const msg = new SpeechSynthesisUtterance("Yo! Humans... Happy New Year 2025!");
+    speechSynthesis.speak(msg);
 
-      const confetti = () => {
-        const end = Date.now() + 2 * 1000; // 2 seconds
-        const colors = ["#ff4081", "#00c9ff", "#ffff00", "#ffffff"];
+    // Import confetti and trigger the confetti effect
+    import('https://cdn.jsdelivr.net/npm/canvas-confetti').then(confetti => {
+        confetti.default();
+    }).catch(console.error);
+}
 
-        (function frame() {
-          confetti({
-            particleCount: 100,
-            spread: 90, // Increase spread for full-screen effect
-            origin: { x: Math.random(), y: Math.random() }
-          });
 
-          if (Date.now() < end) {
-            requestAnimationFrame(frame);
-          }
-        })();
-      };
-      confetti();
-    }
   </script>
   <script>
     var design = anime({
