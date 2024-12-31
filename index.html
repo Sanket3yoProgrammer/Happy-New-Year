@@ -515,6 +515,136 @@
     stroke-width: 1px;
   fill:#1C2033;
 }
+
+section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      margin: 50px auto;
+      max-width: 800px;
+    }
+    .divider {
+      width: 80%;
+      margin: 30px auto;
+      height: 2px;
+      position: relative;
+      background: linear-gradient(to right, transparent, #aa8239, transparent);
+    }
+    .divider:before,
+    .divider:after {
+      content: "";
+      position: absolute;
+      top: -15px;
+      width: 20px;
+      height: 20px;
+      background: #aa8239;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #aa8239, 0 0 20px #aa8239;
+    }
+    .divider:before {
+      left: 0;
+    }
+    .divider:after {
+      right: 0;
+    }
+    .neon-button, .glitch-button {
+      margin: 20px 0;
+    }
+    /* Neon Button Styles */
+    .neon-button {
+      position: relative;
+      padding: 15px 40px;
+      font-size: 18px;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 2px;
+      border: none;
+      background: linear-gradient(90deg, #ff6ec4, #7873f5);
+      border-radius: 8px;
+      box-shadow: 0 0 20px #ff6ec4, 0 0 20px #7873f5;
+      animation: pulse 2s infinite;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .neon-button:hover {
+      box-shadow: 0 0 40px #ff6ec4, 0 0 40px #7873f5;
+    }
+    .neon-button:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+    }
+    .neon-button:hover:after {
+      width: 200px;
+      height: 200px;
+    }
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 20px #ff6ec4, 0 0 20px #7873f5;
+      }
+      50% {
+        box-shadow: 0 0 30px #ff6ec4, 0 0 30px #7873f5;
+      }
+    }
+    /* Glitch Button Styles */
+    .glitch-button {
+      position: relative;
+      padding: 20px 50px;
+      font-size: 20px;
+      color: white;
+      text-transform: uppercase;
+      border: 2px solid #00ffff;
+      background: transparent;
+      border-radius: 10px;
+      text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+      cursor: pointer;
+      overflow: hidden;
+      animation: glitch 3s infinite;
+    }
+    .glitch-button:before,
+    .glitch-button:after {
+      content: "Happy New Year";
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+      clip-path: inset(0 0 50% 0);
+    }
+    .glitch-button:after {
+      clip-path: inset(50% 0 0 0);
+      text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+    }
+    .glitch-button:hover {
+      background: rgba(0, 255, 255, 0.1);
+      box-shadow: 0 0 20px #00ffff, 0 0 30px #ff00ff;
+    }
+    @keyframes glitch {
+      0% {
+        transform: translate(0);
+      }
+      33% {
+        transform: translate(-5px, 5px);
+      }
+      66% {
+        transform: translate(5px, -5px);
+      }
+      100% {
+        transform: translate(0);
+      }
+    }
   </style>
 </head>
 <body>
@@ -980,6 +1110,13 @@
   
 </div>
     </div></a>
+    
+      <section>
+    <div class="divider"></div>
+    <button class="neon-button">Happy New Year</button>
+    <div class="divider"></div>
+    <button class="glitch-button">Happy New Year</button>
+  </section>
   <script>
     var design = anime({
   targets: '#newyear2020 #happy',
