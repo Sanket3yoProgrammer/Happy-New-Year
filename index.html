@@ -1114,17 +1114,27 @@ section {
     
       <section>
     <div class="divider"></div>
- <button class="neon-button" onclick="celebrate()">Celebrate!!</button>
+ <button class="neon-button" onclick="celebrate(); celeb()">Celebrate!!</button>
   <div class="divider"></div>
   <button class="glitch-button" onclick="teleport()">Happy New Year</button>
   </section> 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function celebrate() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.7 },
+                colors: ['#ff6b6b', '#ff9f43', '#ff6b81', '#ffb7c5', '#FFD700']
+            });
+        }
+    </script>
   <script>
     function teleport() {
       window.location.href = "https://new-year-2025-eight.vercel.app/";
     }
-
-     function celebrate() {
+    
+     function celeb() {
             // Speak a message
             const msg = new SpeechSynthesisUtterance("Yo! Humans... Happy New Year 2025!");
             speechSynthesis.speak(msg);
