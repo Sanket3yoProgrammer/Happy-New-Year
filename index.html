@@ -648,7 +648,7 @@ section {
   </style>
 </head>
 <body>
- <canvas id="confetti" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+
 <a href="https://github.com/Sanket3yoProgrammer" target="_blank">	   
 <div class="container nav_container mt-5">
 <div class="col-sm-12 col-md-12 mauto">
@@ -1117,8 +1117,7 @@ section {
  <button class="neon-button" onclick="teleport()">Happy New Year</button>
   <div class="divider"></div>
   <button class="glitch-button" onclick="celebrate()">Celebrate!!</button>
-  </section> </canvas>
-
+  </section> 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
     function teleport() {
@@ -1134,19 +1133,10 @@ section {
         const colors = ["#ff4081", "#00c9ff", "#ffff00", "#ffffff"];
 
         (function frame() {
-          canvasConfetti({
+          confetti({
             particleCount: 100,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-            colors,
-          });
-          canvasConfetti({
-            particleCount: 100,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-            colors,
+            spread: 90, // Increase spread for full-screen effect
+            origin: { x: Math.random(), y: Math.random() }
           });
 
           if (Date.now() < end) {
