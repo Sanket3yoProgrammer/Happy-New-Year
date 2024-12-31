@@ -1113,10 +1113,48 @@ section {
     
       <section>
     <div class="divider"></div>
-    <button class="neon-button">Happy New Year</button>
-    <div class="divider"></div>
-    <button class="glitch-button">Happy New Year</button>
+ <button class="neon-button" onclick="teleport()">Happy New Year</button>
+  <div class="divider"></div>
+  <button class="glitch-button" onclick="celebrate()">Celebrate!!</button>
   </section>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    function teleport() {
+      window.location.href = "https://new-year-2025-eight.vercel.app/";
+    }
+
+    function celebrate() {
+      const msg = new SpeechSynthesisUtterance("Yoooooo! Happy New Year 2025!");
+      speechSynthesis.speak(msg);
+
+      const confetti = () => {
+        const end = Date.now() + 2 * 1000; // 2 seconds
+        const colors = ["#ff4081", "#00c9ff", "#ffff00", "#ffffff"];
+
+        (function frame() {
+          canvasConfetti({
+            particleCount: 100,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors,
+          });
+          canvasConfetti({
+            particleCount: 100,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors,
+          });
+
+          if (Date.now() < end) {
+            requestAnimationFrame(frame);
+          }
+        })();
+      };
+      confetti();
+    }
+  </script>
   <script>
     var design = anime({
   targets: '#newyear2020 #happy',
