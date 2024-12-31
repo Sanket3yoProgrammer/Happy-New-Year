@@ -1114,9 +1114,9 @@ section {
     
       <section>
     <div class="divider"></div>
- <button class="neon-button" onclick="teleport()">Happy New Year</button>
+ <button class="neon-button" onclick="celebrate()">Celebrate!!</button>
   <div class="divider"></div>
-  <button class="glitch-button" onclick="celebrate()">Celebrate!!</button>
+  <button class="glitch-button" onclick="teleport()">Happy New Year</button>
   </section> 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
@@ -1124,16 +1124,30 @@ section {
       window.location.href = "https://new-year-2025-eight.vercel.app/";
     }
 
-    function celebrate() {
-    // Speak a message
-    const msg = new SpeechSynthesisUtterance("Yo! Humans... Happy New Year 2025!");
-    speechSynthesis.speak(msg);
+     function celebrate() {
+            // Speak a message
+            const msg = new SpeechSynthesisUtterance("Yo! Humans... Happy New Year 2025!");
+            speechSynthesis.speak(msg);
 
-    // Import confetti and trigger the confetti effect
-    import('https://cdn.jsdelivr.net/npm/canvas-confetti').then(confetti => {
-        confetti.default();
-    }).catch(console.error);
-}
+            // Import confetti and trigger the confetti effect
+            import('https://cdn.jsdelivr.net/npm/canvas-confetti').then(confetti => {
+                const duration = 5 * 1000; // confetti duration
+                const end = Date.now() + duration;
+                const interval = 200; // confetti spawn interval
+
+                (function frame() {
+                    confetti.default({
+                        particleCount: 2,
+                        spread: 90,
+                        origin: { y: 0.6 },
+                    });
+
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                }());
+            }).catch(console.error);
+        }
 
 
   </script>
